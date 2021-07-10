@@ -3,11 +3,11 @@ function mediaPlayer(config) {
 }
 
 mediaPlayer.prototype.play = function () {
-  video.play();
+  this.media.play();
 };
 
 mediaPlayer.prototype.pause = function () {
-  video.pause();
+  this.media.pause();
 };
 
 mediaPlayer.prototype.togglePlay = function () {
