@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prototype</title>
+  </head>
+  <body>
+    <a href="../ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+
+    <script>
+      // Un objeto común y corriente
+      // const cars = {
+      //   brand1: "volkswagen",
+      //   brand2: "peugeot",
+      //   brand3: "toyota",
+      //   brand4: "kia",
+      // };
+
+      // cars.saludar = function () {
+      //   console.log(`Hola la marca de carros mas confiable es ${this.brand3}`);
+      // };
+
+      // cars.saludar();
+
+      // seamos mas eficientes
+      // function superCar(brand) {
+      //   const cars = {
+      //     brand: brand,
+      //   };
+
+      //   cars.saludar = function () {
+      //     console.log(`Hola la marca de carros mas linda es ${this.brand}`);
+      //   };
+      //   return cars;
+      // }
+      // const peugeot = superCar("peugeot");
+      // peugeot.saludar();
+      // const volkswagen = superCar("volskswagen");
+      // volkswagen.saludar();
+
+      // Aun podemos mejorar y evitar tener que crear la misma funcion cada vez
+      // const carMethods = {
+      //   saludar: function () {
+      //     console.log(`la marca de carros es ${this.brand}`);
+      //   },
+      // };
+      // function superCar(brand) {
+      //   const cars = {
+      //     brand: brand,
+      //   };
+      //   cars.saludar = carMethods.saludar;
+      //   return cars;
+      // }
+      // const peugeot = superCar("peugeot");
+      // peugeot.saludar();
+      // const volkswagen = superCar("volskswagen");
+      // volkswagen.saludar();
+
+      // Object.create
+      // const nuevoObjeto = Object.create(objeto);
+      // const carMethods = {
+      //   saludar: function () {
+      //     console.log(`me encanta la marca ${this.brand}`);
+      //   },
+      // };
+      // function superCar(brand) {
+      //   const cars = Object.create(carMethods);
+      //   cars.brand = brand;
+      //   return cars;
+      // }
+      // const peugeot = superCar("peugeot");
+      // peugeot.saludar();
+      // const volkswagen = superCar("volskswagen");
+      // volkswagen.saludar();
+
+      // Los metodos de cars dentro de superCar
+
+      // function superCar(brand) {
+      //   const cars = Object.create(superCar.prototype);
+      //   cars.brand = brand;
+
+      //   return cars;
+      // }
+
+      // superCar.prototype.saludar = function () {
+      //   console.log(`el mejor diseño lo tiene ${this.brand}`);
+      // };
+
+      // const peugeot = superCar("peugeot");
+      // peugeot.saludar();
+
+      // const seat = superCar("seat");
+      // seat.saludar();
+
+      // new es un atajo (azucar sintactica) para llevar superCar.prototype al objeto
+      function superCar(brand) {
+        this.brand = brand;
+      }
+
+      superCar.prototype.saludar = function () {
+        console.log(`New: ${this.brand}`);
+      };
+
+      const peugeot = new superCar("peugeot");
+      peugeot.saludar();
+
+      const seat = new superCar("seat");
+      seat.saludar();
+    </script>
+  </body>
+</html>
